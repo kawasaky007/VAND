@@ -5,6 +5,7 @@ import { Pokemon, TypePokemon } from 'src/app/models';
 import { BehaviorSubject, Observable, debounceTime, pipe, takeUntil } from 'rxjs';
 import { BaseTableComponent } from '../base-table.component';
 import { PokemonItemComponent } from '../pokemon-item/pokemon-item.component';
+import { SORT_TYPES } from 'src/app/consts/main.const';
 
 @Component({
   selector: 'app-list-pokemon',
@@ -43,8 +44,12 @@ export class ListPokemonComponent extends BaseTableComponent {
   }
 
   nzSortOrderChange(key: string, event: any) {
-    console.log(event);
-    // if ()
+    let sortValue = null;
+    if (event) {
+      sortValue = event === SORT_TYPES.ASCEND ? key : `-${key}`
+    }
+    this.pokemonService.setSort(sortValue)
+    this.pokemonService.getData();
 
   }
 
@@ -67,7 +72,6 @@ export class ListPokemonComponent extends BaseTableComponent {
     })
 
     this.searchChange$.asObservable().pipe(debounceTime(500)).subscribe((res) => {
-      console.log(res);
       this.isLoadingSelect = false
       if (!res && res === '') {
         this.optionList = this.type

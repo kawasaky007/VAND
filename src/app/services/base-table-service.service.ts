@@ -6,7 +6,6 @@ export class BaseTableService extends AbsBaseService {
 
     private subscriptionLoading = new BehaviorSubject<boolean>(false);
     loading$: Observable<boolean> = this.subscriptionLoading.asObservable();
-
     private subscriptionTotal = new BehaviorSubject<number>(0);
     total$: Observable<number> = this.subscriptionTotal.asObservable();
     page: number = 1;
@@ -18,7 +17,7 @@ export class BaseTableService extends AbsBaseService {
             'page[number]': this.page,
             'page[size]': this.size,
             'filter[type]': this.filterType,
-            // sort: this.sort
+            sort: this.sort
 
 
         }
@@ -41,6 +40,6 @@ export class BaseTableService extends AbsBaseService {
         this.filterType = value;
     }
     setSort(value: string | null) {
-
+        this.sort = value
     }
 }

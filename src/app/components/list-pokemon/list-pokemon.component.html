@@ -38,14 +38,45 @@
       >
         Number
       </th>
+      <th>Type 1</th>
+      <th>Type 2</th>
       <th
         [nzShowSort]="true"
-        (nzSortOrderChange)="nzSortOrderChange('type', $event)"
+        (nzSortOrderChange)="nzSortOrderChange('total', $event)"
       >
-        Type 1
+        Total
       </th>
-      <th>Type 2</th>
-      <th>Action</th>
+      <th
+        [nzShowSort]="true"
+        (nzSortOrderChange)="nzSortOrderChange('hp', $event)"
+      >
+        HP
+      </th>
+      <th
+        [nzShowSort]="true"
+        (nzSortOrderChange)="nzSortOrderChange('attack', $event)"
+      >
+        Attack
+      </th>
+      <th
+        [nzShowSort]="true"
+        (nzSortOrderChange)="nzSortOrderChange('defense', $event)"
+      >
+        Defense
+      </th>
+      <th
+        [nzShowSort]="true"
+        (nzSortOrderChange)="nzSortOrderChange('sp_atk', $event)"
+      >
+        sp_atk
+      </th>
+      <th
+        [nzShowSort]="true"
+        (nzSortOrderChange)="nzSortOrderChange('sp_def', $event)"
+      >
+        sp_def
+      </th>
+      <th>Speed</th>
     </tr>
   </thead>
   <tbody>
@@ -59,7 +90,13 @@
       <td>{{ data.number }}</td>
       <td>{{ data.type_1 | type : type }}</td>
       <td>{{ data.type_2 | type : type }}</td>
-      <td>Delete</td>
+      <td>{{ data.total }}</td>
+      <td>{{ data.hp }}</td>
+      <td>{{ data.attack }}</td>
+      <td>{{ data.defense }}</td>
+      <td>{{ data.sp_atk }}</td>
+      <td>{{ data.sp_def }}</td>
+      <td>{{ data.speed }}</td>
     </tr>
   </tbody>
 </nz-table>

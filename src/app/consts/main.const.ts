@@ -1,4 +1,4 @@
-export type SORT_TYPES = {
-    ASCEND: 'ascend'
+export const SORT_TYPES = {
+    ASCEND: 'ascend',
     DESCEND: 'descend'
 }
