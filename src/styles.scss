@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "assets/styles/nv-style.scss";
+@import "assets//styles/nv-mixins.scss";
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: radial-gradient(#373b44, #4286f4);
+}
+.container-fluid {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+img {
+  max-width: 100%;
+}

@@ -1,0 +1,20 @@
+<nz-modal
+  [(nzVisible)]="active"
+  [nzTitle]="data?.name"
+  (nzOnCancel)="close()"
+  (nzOnOk)="close()"
+>
+  <ng-container *nzModalContent>
+    <div class="item nv-flex nv-items-center nv-gap-24">
+      <div class="image nv-flex-basis-60">
+        <img class="" [src]="urlImg" alt="" srcset="" />
+      </div>
+      <div class="info nv-flex-basis-40 nv-flex nv-flex-col nv-gap-8">
+        <span>HP: {{ data?.hp }}</span>
+        <span>Attack,: {{ data?.attack }}</span>
+        <span>Defense: {{ data?.defense }}</span>
+        <span>Speed: {{ data?.speed }}</span>
+      </div>
+    </div>
+  </ng-container>
+</nz-modal>

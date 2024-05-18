@@ -1,0 +1,76 @@
+<div class="nv-flex nv-justify-end nv-my-16 nv-gap-8">
+  <nz-select
+    class="nv-width-300"
+    nzPlaceHolder="Select type"
+    nzAllowClear
+    nzShowSearch
+    nzServerSearch
+    [(ngModel)]="selectedType"
+    (nzOnSearch)="onSearchSelect($event)"
+    (ngModelChange)="ngModelChangeSelect($event)"
+  >
+    <ng-container *ngFor="let o of optionList">
+      <nz-option
+        *ngIf="!isLoadingSelect"
+        [nzValue]="o.id"
+        [nzLabel]="o.name"
+      ></nz-option>
+    </ng-container>
+    <nz-option *ngIf="isLoadingSelect" nzDisabled nzCustomContent>
+      <span nz-icon nzType="loading" class="loading-icon"></span>
+      Loading Data...
+    </nz-option>
+  </nz-select>
+</div>
+<nz-table
+  #basicTable
+  [nzData]="listDataPokemon"
+  [nzShowPagination]="false"
+  [nzFooter]="footer"
+  [nzLoading]="loading$ | async"
+>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th
+        [nzShowSort]="true"
+        (nzSortOrderChange)="nzSortOrderChange('number', $event)"
+      >
+        Number
+      </th>
+      <th
+        [nzShowSort]="true"
+        (nzSortOrderChange)="nzSortOrderChange('type', $event)"
+      >
+        Type 1
+      </th>
+      <th>Type 2</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td
+        class="nv-pointer nv-text-primary-100"
+        (click)="showItemPokemon(data)"
+      >
+        {{ data.name }}
+      </td>
+      <td>{{ data.number }}</td>
+      <td>{{ data.type_1 | type : type }}</td>
+      <td>{{ data.type_2 | type : type }}</td>
+      <td>Delete</td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<ng-template #footer>
+  <div class="nv-flex nv-justify-end">
+    <nz-pagination
+      (nzPageIndexChange)="nzPageIndexChange($event)"
+      [nzPageIndex]="1"
+      [nzTotal]="total$ | async"
+    ></nz-pagination>
+  </div>
+</ng-template>
+<app-pokemon-item #pokemonItem />
