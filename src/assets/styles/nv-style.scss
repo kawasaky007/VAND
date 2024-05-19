@@ -1926,7 +1926,10 @@
 }
 
 //sm	640px
-@media (min-width: 640px) {
+@media (max-width: 640px) {
+  .nv-title-1 {
+    font-size: 48px !important;
+  }
 }
 //md	768px
 @media (min-width: 768px) {

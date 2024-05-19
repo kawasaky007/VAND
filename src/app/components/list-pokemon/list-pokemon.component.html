@@ -1,6 +1,6 @@
-<div class="nv-flex nv-justify-end nv-my-16 nv-gap-8">
+<div class="nv-flex nv-justify-end nv-my-16 nv-gap-8 content-filter">
   <nz-input-group
-    class="nv-width-384"
+    class="nv-width-384 input-search"
     nzSearch
     [nzAddOnAfter]="suffixIconButton"
   >
@@ -13,7 +13,7 @@
     />
   </nz-input-group>
   <nz-select
-    class="nv-width-300"
+    class="nv-width-384"
     nzPlaceHolder="Select type"
     nzAllowClear
     nzShowSearch
@@ -41,6 +41,7 @@
   [nzShowPagination]="false"
   [nzFooter]="footer"
   [nzLoading]="loading$ | async"
+  [nzScroll]="{ x: '1440px' }"
 >
   <thead>
     <tr>
