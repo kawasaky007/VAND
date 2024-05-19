@@ -24,6 +24,9 @@ export class ListPokemonComponent extends BaseTableComponent {
   loading$: Observable<boolean> = this.pokemonService.loading$;
   total$: Observable<number> = this.pokemonService.total$;
   searchChange$ = new BehaviorSubject('');
+  keyword: string = ''
+  searchName$ = new BehaviorSubject('');
+  nzShowSort: boolean = true
   @ViewChild('pokemonItem') pokemonItem?: PokemonItemComponent
   constructor(
     injector: Injector,
@@ -45,6 +48,7 @@ export class ListPokemonComponent extends BaseTableComponent {
 
   nzSortOrderChange(key: string, event: any) {
     let sortValue = null;
+    this.nzShowSort = false
     if (event) {
       sortValue = event === SORT_TYPES.ASCEND ? key : `-${key}`
     }
@@ -62,7 +66,7 @@ export class ListPokemonComponent extends BaseTableComponent {
 
 
     this.pokemonService.pokemon$.pipe((takeUntil(this.destroy$))).subscribe((res) => {
-      this.listDataPokemon = res;
+      this.listDataPokemon = res
     })
     this.pokemonService.pokemonType$.pipe((takeUntil(this.destroy$))).subscribe((res) => {
       this.type = res;
@@ -81,6 +85,17 @@ export class ListPokemonComponent extends BaseTableComponent {
       this.optionList = this.type.filter((item) => item.name.toLocaleLowerCase().includes(res.toLocaleLowerCase()) || item.id.toString().toLocaleLowerCase().includes(res.toLocaleLowerCase()))
 
     })
+    this.searchName$.asObservable().pipe(debounceTime(500)).subscribe((res) => {
+      this.pokemonService.setKeyword(res);
+      this.pokemonService.getData();
+
+
+
+    })
+
+  }
+  searchNamePokemon(value: string) {
+    this.searchName$.next(value);
 
   }
   onSearchSelect(value: string): void {

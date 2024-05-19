@@ -22,6 +22,8 @@ import { PipeModule } from './pipes/pipe.module';
 import { BaseTableService } from './services/base-table-service.service';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzInputModule } from 'ng-zorro-antd/input';
+
 registerLocaleData(vi);
 
 const antDesignIcons = AllIcons as {
@@ -34,6 +36,7 @@ const NZ_MODULE = [
   NzPaginationModule,
   NzModalModule,
   NzSelectModule,
+  NzInputModule,
   NzIconModule.forRoot(icons)
 ]
 @NgModule({

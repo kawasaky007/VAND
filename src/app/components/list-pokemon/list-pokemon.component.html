@@ -1,4 +1,17 @@
 <div class="nv-flex nv-justify-end nv-my-16 nv-gap-8">
+  <nz-input-group
+    class="nv-width-384"
+    nzSearch
+    [nzAddOnAfter]="suffixIconButton"
+  >
+    <input
+      (ngModelChange)="searchNamePokemon($event)"
+      [(ngModel)]="keyword"
+      type="text"
+      nz-input
+      placeholder="input search name"
+    />
+  </nz-input-group>
   <nz-select
     class="nv-width-300"
     nzPlaceHolder="Select type"
@@ -33,7 +46,7 @@
     <tr>
       <th>Name</th>
       <th
-        [nzShowSort]="true"
+        [nzShowSort]="nzShowSort"
         (nzSortOrderChange)="nzSortOrderChange('number', $event)"
       >
         Number
@@ -41,37 +54,37 @@
       <th>Type 1</th>
       <th>Type 2</th>
       <th
-        [nzShowSort]="true"
+        [nzShowSort]="nzShowSort"
         (nzSortOrderChange)="nzSortOrderChange('total', $event)"
       >
         Total
       </th>
       <th
-        [nzShowSort]="true"
+        [nzShowSort]="nzShowSort"
         (nzSortOrderChange)="nzSortOrderChange('hp', $event)"
       >
         HP
       </th>
       <th
-        [nzShowSort]="true"
+        [nzShowSort]="nzShowSort"
         (nzSortOrderChange)="nzSortOrderChange('attack', $event)"
       >
         Attack
       </th>
       <th
-        [nzShowSort]="true"
+        [nzShowSort]="nzShowSort"
         (nzSortOrderChange)="nzSortOrderChange('defense', $event)"
       >
         Defense
       </th>
       <th
-        [nzShowSort]="true"
+        [nzShowSort]="nzShowSort"
         (nzSortOrderChange)="nzSortOrderChange('sp_atk', $event)"
       >
         sp_atk
       </th>
       <th
-        [nzShowSort]="true"
+        [nzShowSort]="nzShowSort"
         (nzSortOrderChange)="nzSortOrderChange('sp_def', $event)"
       >
         sp_def
@@ -111,3 +124,13 @@
   </div>
 </ng-template>
 <app-pokemon-item #pokemonItem />
+<ng-template #suffixIconButton>
+  <button
+    (click)="searchNamePokemon(keyword)"
+    nz-button
+    nzType="primary"
+    nzSearch
+  >
+    <span nz-icon nzType="search"></span>
+  </button>
+</ng-template>

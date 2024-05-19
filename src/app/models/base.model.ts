@@ -2,7 +2,8 @@ export interface PayloadList {
     'page[number]': number;
     'page[size]': number;
     sort?: string | null,
-    'filter[type]': number | null
+    'filter[type]': number | null,
+    'filter[name]': string
 }
 
 export interface DataList<T> {

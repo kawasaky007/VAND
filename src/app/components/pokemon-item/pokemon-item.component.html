@@ -11,10 +11,42 @@
         <img class="nv-w-full" [src]="urlImg" alt="" srcset="" />
       </div>
       <div class="info nv-flex-basis-40 nv-flex nv-flex-col nv-gap-8">
-        <span>HP: {{ data?.hp }}</span>
-        <span>Attack,: {{ data?.attack }}</span>
-        <span>Defense: {{ data?.defense }}</span>
-        <span>Speed: {{ data?.speed }}</span>
+        <div class="nv-flex nv-items-center nv-gap-8">
+          <span class="nv-width-104">HP: {{ data?.hp }} </span>
+          <img
+            class="img-icon-properties"
+            src="assets/img/heart.png"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="nv-flex nv-items-center nv-gap-8">
+          <span class="nv-width-104">Attack: {{ data?.attack }} </span>
+          <img
+            class="img-icon-properties"
+            src="assets/img/battle.png"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="nv-flex nv-items-center nv-gap-8">
+          <span class="nv-width-104">Defense: {{ data?.defense }} </span>
+          <img
+            class="img-icon-properties"
+            src="assets/img/security.png"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="nv-flex nv-items-center nv-gap-8">
+          <span class="nv-width-104">Speed: {{ data?.speed }} </span>
+          <img
+            class="img-icon-properties"
+            src="assets/img/running.png"
+            alt=""
+            srcset=""
+          />
+        </div>
       </div>
     </div>
   </ng-container>
